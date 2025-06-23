@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="flex justify-center items-center h-screen bg-[#0d1c2a]">
+    <div class="w-full max-w-md p-6 bg-[#1c2128] rounded-lg shadow-md">
+        <h2 class="text-2xl text-center font-bold text-[#9abad8] mb-4">Edit Task</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="flex justify-between mt-4">
+                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    Save
+                </button>
+                <a href="{% url 'dashboard:index' %}" class="text-red-400 hover:underline">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
