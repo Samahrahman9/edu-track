@@ -1,7 +1,12 @@
+{% extends 'core/base.html' %}
 {% load static %}
-{% include 'core/base.html' %}
+
 {% block content %}
-<p>
-    Welcome to EduTrack
-</p>
+    <p>Welcome to EduTrack</p>
+
+    {% if user.is_superuser %}
+        <a href="/admin/" target="_blank" style="color: #4fc3f7; font-weight: bold;">
+            🛠 Admin Panel
+        </a>
+    {% endif %}
 {% endblock %}

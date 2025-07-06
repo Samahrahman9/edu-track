@@ -31,14 +31,21 @@
                     <li><a class="md:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-[#2f5170] hover:text-slate-50"
                             href="{% url 'reporting:tasks_history' %}">History</a></li>
                     {% if user.is_authenticated %}
-                    <li><a class="md:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-red-600 hover:text-red-600"
-                            href="{% url 'accounts:logout' %}">Logout</a></li>
-                    {% else %}
-                    <li><a class="md:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-[#2f5170] hover:text-blue-500"
-                            href="{% url 'accounts:login' %}">Login</a></li>
-                    <li><a class="md:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-[#2f5170] hover:text-green-500"
-                            href="{% url 'accounts:signup' %}">Register</a></li>
-                    {% endif %}
+    {% if user.is_superuser %}
+    <li>
+      <a class="md:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-yellow-500 hover:text-yellow-400"
+         href="/admin/">Admin Panel</a>
+    </li>
+    {% endif %}
+    <li><a class="md:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-red-600 hover:text-red-600"
+            href="{% url 'accounts:logout' %}">Logout</a></li>
+{% else %}
+    <li><a class="md:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-[#2f5170] hover:text-blue-500"
+            href="{% url 'accounts:login' %}">Login</a></li>
+    <li><a class="md:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-[#2f5170] hover:text-green-500"
+            href="{% url 'accounts:signup' %}">Register</a></li>
+{% endif %}
+
                 </ul>
             </nav>
         </div>
